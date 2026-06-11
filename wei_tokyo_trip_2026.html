@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 2026 </title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #0f0f13;
+    --surface: #17171e;
+    --surface2: #1e1e28;
+    --border: #2c2c3a;
+    --accent: #ff6b35;
+    --accent2: #ffd166;
+    --pink: #f72585;
+    --blue: #4cc9f0;
+    --green: #06d6a0;
+    --purple: #7b2d8b;
+    --text: #e8e8f0;
+    --text-muted: #7a7a96;
+    --ramen: #ff9a3c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /*  HERO  */
+  .hero {
+    background: linear-gradient(135deg, #0f0f13 0%, #1a0a2e 50%, #0f0f13 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(247,37,133,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-flag { font-size: 2.2rem; margin-bottom: 8px; }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, #ff6b35, #ffd166, #f72585);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .tag {
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: 1px solid;
+  }
+  .tag-run   { background: rgba(76,201,240,0.12); border-color: var(--blue);   color: var(--blue); }
+  .tag-shop  { background: rgba(255,107,53,0.12);  border-color: var(--accent); color: var(--accent); }
+  .tag-ramen { background: rgba(255,154,60,0.12);  border-color: var(--ramen); color: var(--ramen); }
+  .tag-gay   { background: rgba(247,37,133,0.12);  border-color: var(--pink);  color: var(--pink); }
+  .tag-pikmin{ background: rgba(6,214,160,0.12);   border-color: var(--green); color: var(--green); }
+
+  /*  NAV TABS  */
+  .nav-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,15,19,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    overflow-x: auto;
+    display: flex;
+    gap: 0;
+    scrollbar-width: none;
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 14px 18px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-btn:hover { color: var(--text); }
+  .nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /*  SECTIONS  */
+  .section { display: none; padding: 28px 16px 60px; max-width: 760px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /*  SECTION TITLE  */
+  .section-title {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem; font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon { font-size: 1.6rem; }
+
+  /*  DAY CARD  */
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .day-header {
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 14px;
+    background: var(--surface2);
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .day-title {
+    font-size: 0.98rem;
+    font-weight: 500;
+    flex: 1;
+  }
+  .day-arrow {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+  }
+  .day-card.open .day-arrow { transform: rotate(180deg); }
+  .day-body { display: none; padding: 0 20px 20px; }
+  .day-card.open .day-body { display: block; }
+
+  /*  TIME BLOCK  */
+  .time-block {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 0 14px;
+    margin-top: 16px;
+    position: relative;
+  }
+  .time-block::before {
+    content: '';
+    position: absolute;
+    left: 70px; top: 22px; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .time-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding-top: 4px;
+    text-align: right;
+    padding-right: 14px;
+  }
+  .time-content { padding-left: 14px; position: relative; }
+  .time-content::before {
+    content: '';
+    position: absolute;
+    left: -3px; top: 7px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .time-content h4 {
+    font-size: 0.93rem; font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .time-content p {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .time-content .chip {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 4px 4px 0 0;
+    font-weight: 500;
+  }
+  .chip-run   { background: rgba(76,201,240,0.15);  color: var(--blue); }
+  .chip-shop  { background: rgba(255,107,53,0.15);  color: var(--accent); }
+  .chip-ramen { background: rgba(255,154,60,0.15);  color: var(--ramen); }
+  .chip-gay   { background: rgba(247,37,133,0.15);  color: var(--pink); }
+  .chip-pikmin{ background: rgba(6,214,160,0.15);   color: var(--green); }
+  .chip-tip   { background: rgba(255,209,102,0.15); color: var(--accent2); }
+
+  /*  RAMEN LIST  */
+  .ramen-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .ramen-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--ramen);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .ramen-card h3 {
+    font-size: 0.98rem; font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ramen);
+  }
+  .ramen-meta {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 6px;
+  }
+  .ramen-type {
+    font-size: 0.72rem; font-weight: 600;
+    background: rgba(255,154,60,0.15);
+    color: var(--ramen);
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+  .ramen-loc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .ramen-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .ramen-note {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--accent2);
+  }
+
+  /*  SPOT LIST (///)  */
+  .spot-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .spot-card h3 {
+    font-size: 0.95rem; font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .spot-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .spot-card .map-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .spot-card .map-link:hover { text-decoration: underline; }
+  .accent-left-blue  { border-left: 3px solid var(--blue); }
+  .accent-left-pink  { border-left: 3px solid var(--pink); }
+  .accent-left-green { border-left: 3px solid var(--green); }
+  .accent-left-orange{ border-left: 3px solid var(--accent); }
+  .accent-left-purple{ border-left: 3px solid #b07fe8; }
+
+  /*   /  box  */
+  .info-box {
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 0.83rem;
+    line-height: 1.6;
+  }
+  .info-box-warning {
+    background: rgba(255,209,102,0.08);
+    border: 1px solid rgba(255,209,102,0.3);
+    color: var(--accent2);
+  }
+  .info-box-pink {
+    background: rgba(247,37,133,0.07);
+    border: 1px solid rgba(247,37,133,0.25);
+    color: #f8a0c8;
+  }
+  .info-box-green {
+    background: rgba(6,214,160,0.07);
+    border: 1px solid rgba(6,214,160,0.25);
+    color: var(--green);
+  }
+
+  /* sub-section header */
+  .sub-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 24px 0 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sub-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /*  FOOTER  */
+  footer {
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (min-width: 600px) {
+    .ramen-grid { grid-template-columns: 1fr 1fr; }
+    .section { padding: 32px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!--  HERO  -->
+<div class="hero">
+  <div class="hero-flag"> </div>
+  <h1></h1>
+  <div class="hero-sub">2026 · June 12 – 17 · 6 Days Solo</div>
+  <div class="hero-tags">
+    <span class="tag tag-run">  / </span>
+    <span class="tag tag-shop"> </span>
+    <span class="tag tag-ramen"> </span>
+    <span class="tag tag-gay"> </span>
+    <span class="tag tag-pikmin"> </span>
+  </div>
+</div>
+
+<!--  NAV  -->
+<nav class="nav-bar">
+  <button class="nav-btn active" onclick="show('itinerary', this)"> </button>
+  <button class="nav-btn" onclick="show('ramen', this)"> </button>
+  <button class="nav-btn" onclick="show('run', this)"> </button>
+  <button class="nav-btn" onclick="show('shop', this)">  & </button>
+  <button class="nav-btn" onclick="show('gay', this)"> </button>
+  <button class="nav-btn" onclick="show('pikmin', this)"> </button>
+</nav>
+
+<!-- 
+     TAB 1  
+ -->
+<section id="itinerary" class="section active">
+  <div class="section-title"><span class="section-icon"></span> </div>
+
+  <div class="info-box info-box-warning">
+     
+  </div>
+
+  <!-- DAY 0 -->
+  <div class="day-card open">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-badge">6/12 </span>
+      <span class="day-title"> ·  · </span>
+      <span class="day-arrow"></span>
+    </div>
+    <div class="day-body">
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> </h4>
+          <p> IC Suica / PASMO eSIM  WiFi</p>
+          <span class="chip chip-tip">  N'EX  90 </span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  · </h4>
+          <p></p>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  — AFURI </h4>
+          <p>AFURI </p>
+          <span class="chip chip-ramen"> / </span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  — </h4>
+          <p> Aiiro Cafe  Eagle Tokyo </p>
+          <span class="chip chip-gay">Bar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-badge">6/13 </span>
+      <span class="day-title"> ·  · </span>
+      <span class="day-arrow"></span>
+    </div>
+    <div class="day-body">
+      <div class="time-block">
+        <span class="time-label">06:00</span>
+        <div class="time-content">
+          <h4> 5 km</h4>
+          <p> 5 km</p>
+          <span class="chip chip-run"></span>
+          <span class="chip chip-tip"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label">08:30</span>
+        <div class="time-content">
+          <h4>  / </h4>
+          <p></p>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label">10:30</span>
+        <div class="time-content">
+          <h4> </h4>
+          <p> UniqloGUH&MZARA </p>
+          <span class="chip chip-shop"></span>
+          <span class="chip chip-shop"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> </h4>
+          <p></p>
+          <span class="chip chip-ramen"> / </span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> </h4>
+          <p></p>
+          <span class="chip chip-pikmin"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  + </h4>
+          <p> COMME des GARÇONSIssey Miyake </p>
+          <span class="chip chip-shop"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  — </h4>
+          <p> Bar  20:00 </p>
+          <span class="chip chip-gay">Bar / </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-badge">6/14 </span>
+      <span class="day-title"> ·  · </span>
+      <span class="day-arrow"></span>
+    </div>
+    <div class="day-body">
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  + </h4>
+          <p>/</p>
+          <span class="chip chip-pikmin"></span>
+          <span class="chip chip-pikmin"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> </h4>
+          <p></p>
+          <span class="chip chip-ramen"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  · </h4>
+          <p></p>
+          <span class="chip chip-shop"></span>
+          <span class="chip chip-shop"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  24 </h4>
+          <p>24  ¥2500–2900</p>
+          <span class="chip chip-gay"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> </h4>
+          <p></p>
+          <span class="chip chip-run"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-badge">6/15 </span>
+      <span class="day-title"> ·  · </span>
+      <span class="day-arrow"></span>
+    </div>
+    <div class="day-body">
+      <div class="time-block">
+        <span class="time-label">06:30</span>
+        <div class="time-content">
+          <h4> </h4>
+          <p> 2.2 km</p>
+          <span class="chip chip-run"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label">10:00</span>
+        <div class="time-content">
+          <h4>  / </h4>
+          <p></p>
+          <span class="chip chip-pikmin"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label">11:00</span>
+        <div class="time-content">
+          <h4>  — SCRAMBLE SQUARE + Shibuya 109</h4>
+          <p>Shibuya 109 SCRAMBLE SQUARE  ABC-MART  atmos</p>
+          <span class="chip chip-shop"></span>
+          <span class="chip chip-shop"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  </h4>
+          <p>Tabelog </p>
+          <span class="chip chip-ramen"></span>
+          <span class="chip chip-tip"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  — </h4>
+          <p>vintage </p>
+          <span class="chip chip-shop"></span>
+          <span class="chip chip-shop">Vintage</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  — IPPUDO </h4>
+          <p></p>
+          <span class="chip chip-ramen"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-badge">6/16 </span>
+      <span class="day-title"> ·  ·  · </span>
+      <span class="day-arrow"></span>
+    </div>
+    <div class="day-body">
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  —  & </h4>
+          <p> Yodobashi CameraSwitch </p>
+          <span class="chip chip-shop"></span>
+          <span class="chip chip-shop"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> Homemade Ramen </h4>
+          <p>2025  TRY  9 11:00 </p>
+          <span class="chip chip-ramen"> · </span>
+          <span class="chip chip-tip">  10:45 </span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> — </h4>
+          <p> ACG </p>
+          <span class="chip chip-pikmin"></span>
+          <span class="chip chip-tip"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> Rokuten—  + Bar </h4>
+          <p></p>
+          <span class="chip chip-gay"> + Bar</span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>   </h4>
+          <p></p>
+          <span class="chip chip-run"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <span class="day-badge">6/17 </span>
+      <span class="day-title"> ·  ·  · </span>
+      <span class="day-arrow"></span>
+    </div>
+    <div class="day-body">
+      <div class="info-box info-box-green" style="margin-top: 12px;">
+         
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  —  /  ASICS / Onitsuka / New Balance</h4>
+          <p> LUMINE  ASICS  New Balance  Onitsuka Tiger</p>
+          <span class="chip chip-shop"></span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4>  —    </h4>
+          <p> 08:00  × </p>
+          <span class="chip chip-ramen"> / </span>
+          <span class="chip chip-tip">   </span>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-label"></span>
+        <div class="time-content">
+          <h4> </h4>
+          <p> 3  2 </p>
+          <span class="chip chip-tip"> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+     TAB 2  
+ -->
+<section id="ramen" class="section">
+  <div class="section-title"><span class="section-icon"></span> </div>
+
+  <div class="info-box info-box-warning">
+      Tabelog TRY
+  </div>
+
+  <div class="sub-title"></div>
+  <div class="ramen-grid">
+    <div class="ramen-card">
+      <h3>Homemade Ramen </h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"> · </span>
+        <span class="ramen-loc"> </span>
+      </div>
+      <p>2025 TRY  9 </p>
+      <p class="ramen-note">⏰ 11:00–15:00 10:45 </p>
+      <a class="map-link" href="https://maps.google.com/?q=Homemade+Ramen++" target="_blank"> Google Maps →</a>
+    </div>
+    <div class="ramen-card">
+      <h3> </h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"></span>
+        <span class="ramen-loc"> </span>
+      </div>
+      <p> No.1 08:00 </p>
+      <p class="ramen-note">⏰ 10:00–16:00 </p>
+      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    </div>
+    <div class="ramen-card">
+      <h3> </h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"> · </span>
+        <span class="ramen-loc"> </span>
+      </div>
+      <p>Tabelog </p>
+      <p class="ramen-note">⏰ </p>
+      <a class="map-link" href="https://maps.google.com/?q=++" target="_blank"> Google Maps →</a>
+    </div>
+    <div class="ramen-card">
+      <h3></h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"></span>
+        <span class="ramen-loc">  </span>
+      </div>
+      <p> × </p>
+      <p class="ramen-note">   1F</p>
+      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    </div>
+  </div>
+
+  <div class="sub-title"></div>
+  <div class="ramen-grid">
+    <div class="ramen-card">
+      <h3> IPPUDO</h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"></span>
+        <span class="ramen-loc">  · </span>
+      </div>
+      <p></p>
+      <p class="ramen-note"> </p>
+    </div>
+    <div class="ramen-card">
+      <h3></h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"> · </span>
+        <span class="ramen-loc">  / </span>
+      </div>
+      <p></p>
+      <p class="ramen-note">⏰  + </p>
+      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    </div>
+  </div>
+
+  <div class="sub-title"> / </div>
+  <div class="ramen-grid">
+    <div class="ramen-card">
+      <h3>AFURI </h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"> · </span>
+        <span class="ramen-loc">  /  / </span>
+      </div>
+      <p></p>
+      <p class="ramen-note"> </p>
+    </div>
+    <div class="ramen-card">
+      <h3></h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"> · </span>
+        <span class="ramen-loc"> </span>
+      </div>
+      <p>Tabelog </p>
+      <p class="ramen-note">⏰ </p>
+      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    </div>
+    <div class="ramen-card">
+      <h3> </h3>
+      <div class="ramen-meta">
+        <span class="ramen-type"></span>
+        <span class="ramen-loc">  </span>
+      </div>
+      <p></p>
+      <p class="ramen-note">   1F</p>
+    </div>
+  </div>
+</section>
+
+<!-- 
+     TAB 3  
+ -->
+<section id="run" class="section">
+  <div class="section-title"><span class="section-icon"></span> </div>
+
+  <div class="sub-title"></div>
+
+  <div class="spot-card accent-left-blue">
+    <h3>  — </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip">5 km · </span></div>
+    <p> 5 km</p>
+    <p style="margin-top: 6px;"> Athlete's Club </p>
+    <a class="map-link" href="https://maps.google.com/?q=++" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-blue">
+    <h3>  — </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip">2.2 km /  · </span></div>
+    <p> 2.2 km</p>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="sub-title"></div>
+
+  <div class="spot-card accent-left-blue">
+    <h3>  — </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip"> · </span></div>
+    <p>4 km8 km  21:00–23:00 </p>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-blue">
+    <h3> </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip">5 km · </span></div>
+    <p> 22:00 </p>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="info-box info-box-green" style="margin-top: 8px;">
+     <strong></strong> LUMINE  ASICS  New BalanceOnitsuka Tiger  ABC-MART Grand Stage 
+  </div>
+</section>
+
+<!-- 
+     TAB 4   & 
+ -->
+<section id="shop" class="section">
+  <div class="section-title"><span class="section-icon"></span>  & </div>
+
+  <div class="sub-title"> / </div>
+  <div class="spot-card accent-left-orange">
+    <h3> ·  + </h3>
+    <p>COMME des GARÇONSIssey MiyakeLoewe 10 </p>
+    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-orange">
+    <h3> — SCRAMBLE SQUARE + Shibuya 109</h3>
+    <p>Shibuya 109 SCRAMBLE SQUARE atmosABC-MART Grand Stage</p>
+    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-orange">
+    <h3> —  & Vintage </h3>
+    <p>Vintage </p>
+    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop">Vintage</span></div>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="sub-title"> / </div>
+  <div class="spot-card accent-left-orange">
+    <h3> — </h3>
+    <p>Uniqlo 12 GUZARAH&M ChanelLVGucciHermès </p>
+    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop">Uniqlo </span></div>
+  </div>
+
+  <div class="sub-title"> /  / </div>
+  <div class="spot-card accent-left-orange">
+    <h3> · </h3>
+    <p>SUNDRUGDaikoku </p>
+    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-orange">
+    <h3> —  & </h3>
+    <p>Yodobashi CameraSwitch </p>
+    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="info-box info-box-warning" style="margin-top: 12px;">
+     <strong></strong> ¥5,000  10%
+  </div>
+</section>
+
+<!-- 
+     TAB 5  
+ -->
+<section id="gay" class="section">
+  <div class="section-title"><span class="section-icon"></span> </div>
+
+  <div class="info-box info-box-pink">
+     
+  </div>
+
+  <div class="sub-title"></div>
+
+  <div class="spot-card accent-left-pink">
+    <h3> 24 </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">24</span><span class="chip chip-tip">¥2500–2900</span></div>
+    <p></p>
+    <p style="margin-top: 6px;"> </p>
+    <a class="map-link" href="https://maps.google.com/?q=24" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-pink">
+    <h3> 24 </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">24</span><span class="chip chip-tip">¥2500–2900</span></div>
+    <p>24 bear</p>
+    <a class="map-link" href="https://maps.google.com/?q=24" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="sub-title"></div>
+
+  <div class="info-box info-box-pink" style="font-size: 0.8rem;">
+      XTwitter ¥1000–1500
+  </div>
+
+  <div class="spot-card accent-left-pink">
+    <h3>Cave X@shinjukucave.tokyo</h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">¥1000–1500</span></div>
+    <p> X </p>
+  </div>
+
+  <div class="spot-card accent-left-pink">
+    <h3>Rokuten@rokuten_kanda</h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"> + Bar </span><span class="chip chip-tip"></span></div>
+    <p></p>
+    <a class="map-link" href="https://maps.google.com/?q=+rokuten" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-pink">
+    <h3>Volcano</h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">20–30 · </span></div>
+    <p> 20–30 </p>
+  </div>
+
+  <div class="sub-title">Bar / </div>
+
+  <div class="spot-card accent-left-purple">
+    <h3>Eagle Tokyo @eagletokyojp</h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay">Bar</span><span class="chip chip-tip"></span></div>
+    <p> Barleather & bear </p>
+  </div>
+
+  <div class="spot-card accent-left-purple">
+    <h3>Aiiro Cafe @AiiROCAFE</h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay">Cafe Bar</span><span class="chip chip-tip"> · </span></div>
+    <p> Cafe Bar</p>
+    <a class="map-link" href="https://maps.google.com/?q=Aiiro+Cafe+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-purple">
+    <h3>Beast Tokyo @BEAST_TOKYO</h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-gay">Bar</span><span class="chip chip-tip"></span></div>
+    <p> Bar</p>
+  </div>
+
+  <div class="info-box info-box-pink" style="margin-top: 8px;">
+     <strong> App</strong>Grindr / Jack'd / Scruff 
+  </div>
+</section>
+
+<!-- 
+     TAB 6  
+ -->
+<section id="pikmin" class="section">
+  <div class="section-title"><span class="section-icon"></span>   & </div>
+
+  <div class="info-box info-box-green">
+      Pikmin Bloom  App 
+  </div>
+
+  <div class="sub-title"> · </div>
+
+  <div class="spot-card accent-left-green">
+    <h3> </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
+    <p> Pikmin Bloom </p>
+    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-green">
+    <h3>  + </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
+    <p> 1 </p>
+    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-green">
+    <h3> </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"> 10 </span></div>
+    <p>1300  ACG IDOLM@STER </p>
+    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-green">
+    <h3> </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
+    <p></p>
+    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-green">
+    <h3> </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"> · </span></div>
+    <p></p>
+    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="spot-card accent-left-green">
+    <h3> </h3>
+    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
+    <p></p>
+    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+  </div>
+
+  <div class="info-box info-box-green" style="margin-top: 12px;">
+     <strong></strong> App 
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="font-size: 1.4rem; margin-bottom: 8px;">     </div>
+   2026 · 6/12–6/17<br>
+  <span style="font-size: 0.72rem; color: #555;"> </span>
+</footer>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDay(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
