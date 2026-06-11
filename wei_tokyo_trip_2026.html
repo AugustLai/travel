@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> 2026 </title>
+<title>阿緯的東京獨旅 2026</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap');
 
@@ -33,7 +34,6 @@
     min-height: 100vh;
   }
 
-  /*  HERO  */
   .hero {
     background: linear-gradient(135deg, #0f0f13 0%, #1a0a2e 50%, #0f0f13 100%);
     border-bottom: 1px solid var(--border);
@@ -51,7 +51,6 @@
     background: radial-gradient(ellipse, rgba(247,37,133,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero-flag { font-size: 2.2rem; margin-bottom: 8px; }
   .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2rem, 6vw, 3.4rem);
@@ -85,7 +84,6 @@
   .tag-gay   { background: rgba(247,37,133,0.12);  border-color: var(--pink);  color: var(--pink); }
   .tag-pikmin{ background: rgba(6,214,160,0.12);   border-color: var(--green); color: var(--green); }
 
-  /*  NAV TABS  */
   .nav-bar {
     position: sticky; top: 0; z-index: 100;
     background: rgba(15,15,19,0.92);
@@ -114,22 +112,17 @@
   .nav-btn:hover { color: var(--text); }
   .nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-  /*  SECTIONS  */
   .section { display: none; padding: 28px 16px 60px; max-width: 760px; margin: 0 auto; }
   .section.active { display: block; }
 
-  /*  SECTION TITLE  */
   .section-title {
-    display: flex; align-items: center; gap: 12px;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem; font-weight: 700;
     margin-bottom: 24px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--border);
   }
-  .section-icon { font-size: 1.6rem; }
 
-  /*  DAY CARD  */
   .day-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -154,21 +147,12 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .day-title {
-    font-size: 0.98rem;
-    font-weight: 500;
-    flex: 1;
-  }
-  .day-arrow {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    transition: transform 0.3s;
-  }
+  .day-title { font-size: 0.98rem; font-weight: 500; flex: 1; }
+  .day-arrow { color: var(--text-muted); font-size: 0.8rem; transition: transform 0.3s; }
   .day-card.open .day-arrow { transform: rotate(180deg); }
   .day-body { display: none; padding: 0 20px 20px; }
   .day-card.open .day-body { display: block; }
 
-  /*  TIME BLOCK  */
   .time-block {
     display: grid;
     grid-template-columns: 70px 1fr;
@@ -201,15 +185,8 @@
     background: var(--accent);
     border: 2px solid var(--bg);
   }
-  .time-content h4 {
-    font-size: 0.93rem; font-weight: 700;
-    margin-bottom: 3px;
-  }
-  .time-content p {
-    font-size: 0.83rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
+  .time-content h4 { font-size: 0.93rem; font-weight: 700; margin-bottom: 3px; }
+  .time-content p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
   .time-content .chip {
     display: inline-block;
     font-size: 0.7rem;
@@ -225,12 +202,7 @@
   .chip-pikmin{ background: rgba(6,214,160,0.15);   color: var(--green); }
   .chip-tip   { background: rgba(255,209,102,0.15); color: var(--accent2); }
 
-  /*  RAMEN LIST  */
-  .ramen-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+  .ramen-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
   .ramen-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -238,39 +210,18 @@
     border-radius: 10px;
     padding: 14px 16px;
   }
-  .ramen-card h3 {
-    font-size: 0.98rem; font-weight: 700;
-    margin-bottom: 4px;
-    color: var(--ramen);
-  }
-  .ramen-meta {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-bottom: 6px;
-  }
+  .ramen-card h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 4px; color: var(--ramen); }
+  .ramen-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
   .ramen-type {
     font-size: 0.72rem; font-weight: 600;
     background: rgba(255,154,60,0.15);
     color: var(--ramen);
-    padding: 2px 10px;
-    border-radius: 10px;
+    padding: 2px 10px; border-radius: 10px;
   }
-  .ramen-loc {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    display: flex; align-items: center; gap: 4px;
-  }
-  .ramen-card p {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-  .ramen-note {
-    margin-top: 6px;
-    font-size: 0.75rem;
-    color: var(--accent2);
-  }
+  .ramen-loc { font-size: 0.72rem; color: var(--text-muted); }
+  .ramen-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+  .ramen-note { margin-top: 6px; font-size: 0.75rem; color: var(--accent2); }
 
-  /*  SPOT LIST (///)  */
   .spot-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -278,76 +229,35 @@
     padding: 14px 16px;
     margin-bottom: 12px;
   }
-  .spot-card h3 {
-    font-size: 0.95rem; font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .spot-card p {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
+  .spot-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+  .spot-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
   .spot-card .map-link {
-    display: inline-block;
-    margin-top: 8px;
-    font-size: 0.75rem;
-    color: var(--blue);
-    text-decoration: none;
+    display: inline-block; margin-top: 8px;
+    font-size: 0.75rem; color: var(--blue); text-decoration: none;
   }
   .spot-card .map-link:hover { text-decoration: underline; }
-  .accent-left-blue  { border-left: 3px solid var(--blue); }
-  .accent-left-pink  { border-left: 3px solid var(--pink); }
-  .accent-left-green { border-left: 3px solid var(--green); }
-  .accent-left-orange{ border-left: 3px solid var(--accent); }
-  .accent-left-purple{ border-left: 3px solid #b07fe8; }
+  .accent-left-blue   { border-left: 3px solid var(--blue); }
+  .accent-left-pink   { border-left: 3px solid var(--pink); }
+  .accent-left-green  { border-left: 3px solid var(--green); }
+  .accent-left-orange { border-left: 3px solid var(--accent); }
+  .accent-left-purple { border-left: 3px solid #b07fe8; }
 
-  /*   /  box  */
-  .info-box {
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    font-size: 0.83rem;
-    line-height: 1.6;
-  }
-  .info-box-warning {
-    background: rgba(255,209,102,0.08);
-    border: 1px solid rgba(255,209,102,0.3);
-    color: var(--accent2);
-  }
-  .info-box-pink {
-    background: rgba(247,37,133,0.07);
-    border: 1px solid rgba(247,37,133,0.25);
-    color: #f8a0c8;
-  }
-  .info-box-green {
-    background: rgba(6,214,160,0.07);
-    border: 1px solid rgba(6,214,160,0.25);
-    color: var(--green);
-  }
+  .info-box { border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.83rem; line-height: 1.6; }
+  .info-box-warning { background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.3); color: var(--accent2); }
+  .info-box-pink    { background: rgba(247,37,133,0.07);  border: 1px solid rgba(247,37,133,0.25); color: #f8a0c8; }
+  .info-box-green   { background: rgba(6,214,160,0.07);   border: 1px solid rgba(6,214,160,0.25);  color: var(--green); }
 
-  /* sub-section header */
   .sub-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-muted);
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-muted);
     margin: 24px 0 10px;
     display: flex; align-items: center; gap: 8px;
   }
-  .sub-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+  .sub-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  /*  FOOTER  */
   footer {
-    text-align: center;
-    padding: 32px 16px;
-    color: var(--text-muted);
-    font-size: 0.78rem;
+    text-align: center; padding: 32px 16px;
+    color: var(--text-muted); font-size: 0.78rem;
     border-top: 1px solid var(--border);
   }
 
@@ -359,710 +269,647 @@
 </head>
 <body>
 
-<!--  HERO  -->
 <div class="hero">
-  <div class="hero-flag"> </div>
-  <h1></h1>
-  <div class="hero-sub">2026 · June 12 – 17 · 6 Days Solo</div>
+  <h1>阿緯的東京獨旅</h1>
+  <div class="hero-sub">2026 &middot; June 12 – 17 &middot; 6 Days Solo</div>
   <div class="hero-tags">
-    <span class="tag tag-run">  / </span>
-    <span class="tag tag-shop"> </span>
-    <span class="tag tag-ramen"> </span>
-    <span class="tag tag-gay"> </span>
-    <span class="tag tag-pikmin"> </span>
+    <span class="tag tag-run">晨跑 / 夜跑</span>
+    <span class="tag tag-shop">逛街代購</span>
+    <span class="tag tag-ramen">拉麵朝聖</span>
+    <span class="tag tag-gay">同志場所</span>
+    <span class="tag tag-pikmin">皮克敏神社</span>
   </div>
 </div>
 
-<!--  NAV  -->
 <nav class="nav-bar">
-  <button class="nav-btn active" onclick="show('itinerary', this)"> </button>
-  <button class="nav-btn" onclick="show('ramen', this)"> </button>
-  <button class="nav-btn" onclick="show('run', this)"> </button>
-  <button class="nav-btn" onclick="show('shop', this)">  & </button>
-  <button class="nav-btn" onclick="show('gay', this)"> </button>
-  <button class="nav-btn" onclick="show('pikmin', this)"> </button>
+  <button class="nav-btn active" onclick="show('itinerary', this)">每日行程</button>
+  <button class="nav-btn" onclick="show('ramen', this)">拉麵地圖</button>
+  <button class="nav-btn" onclick="show('run', this)">跑步路線</button>
+  <button class="nav-btn" onclick="show('shop', this)">逛街 &amp; 代購</button>
+  <button class="nav-btn" onclick="show('gay', this)">同志場所</button>
+  <button class="nav-btn" onclick="show('pikmin', this)">皮克敏神社</button>
 </nav>
 
-<!-- 
-     TAB 1  
- -->
+<!-- 每日行程 -->
 <section id="itinerary" class="section active">
-  <div class="section-title"><span class="section-icon"></span> </div>
+  <div class="section-title">每日行程總覽</div>
 
   <div class="info-box info-box-warning">
-     
+    以下為建議行程，所有時間皆可彈性調整。拉麵、跑步路線、同志場所詳細資訊請點選上方對應分頁查看。
   </div>
 
-  <!-- DAY 0 -->
   <div class="day-card open">
     <div class="day-header" onclick="toggleDay(this)">
-      <span class="day-badge">6/12 </span>
-      <span class="day-title"> ·  · </span>
-      <span class="day-arrow"></span>
+      <span class="day-badge">6/12 五</span>
+      <span class="day-title">抵達東京 · 安頓 · 新宿初探</span>
+      <span class="day-arrow">▼</span>
     </div>
     <div class="day-body">
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">下午</span>
         <div class="time-content">
-          <h4> </h4>
-          <p> IC Suica / PASMO eSIM  WiFi</p>
-          <span class="chip chip-tip">  N'EX  90 </span>
+          <h4>抵達東京</h4>
+          <p>成田或羽田入境，建議買好 IC 卡（Suica / PASMO），辦好 eSIM 或租 WiFi。</p>
+          <span class="chip chip-tip">從成田搭 N'EX 到新宿約 90 分鐘</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">傍晚</span>
         <div class="time-content">
-          <h4>  · </h4>
-          <p></p>
+          <h4>入住 · 安頓行李</h4>
+          <p>建議住宿選在新宿或上野區，交通方便，靠近二丁目與各跑步路線。</p>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">晚上</span>
         <div class="time-content">
-          <h4>  — AFURI </h4>
-          <p>AFURI </p>
-          <span class="chip chip-ramen"> / </span>
+          <h4>第一碗拉麵 — AFURI 阿夫利（新宿）</h4>
+          <p>行程第一天輕鬆吃，AFURI 新宿店交通方便，柚子鹽湯頭清爽解飛機疲勞。</p>
+          <span class="chip chip-ramen">鹽味 / 柚子</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">深夜</span>
         <div class="time-content">
-          <h4>  — </h4>
-          <p> Aiiro Cafe  Eagle Tokyo </p>
+          <h4>新宿二丁目 — 踩點初探</h4>
+          <p>若不累可去二丁目走走感受氣氛，推薦先去 Aiiro Cafe 或 Eagle Tokyo 喝一杯。</p>
           <span class="chip chip-gay">Bar</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 1 -->
   <div class="day-card">
     <div class="day-header" onclick="toggleDay(this)">
-      <span class="day-badge">6/13 </span>
-      <span class="day-title"> ·  · </span>
-      <span class="day-arrow"></span>
+      <span class="day-badge">6/13 六</span>
+      <span class="day-title">皇居晨跑 · 銀座逛街 · 東京拉麵街</span>
+      <span class="day-arrow">▼</span>
     </div>
     <div class="day-body">
       <div class="time-block">
         <span class="time-label">06:00</span>
         <div class="time-content">
-          <h4> 5 km</h4>
-          <p> 5 km</p>
-          <span class="chip chip-run"></span>
-          <span class="chip chip-tip"></span>
+          <h4>皇居外周晨跑（5 km）</h4>
+          <p>東京最經典晨跑路線，一圈約 5 km，全程平坦。周六上午最熱鬧，沿途跑者眾多，氣氛絕佳。</p>
+          <span class="chip chip-run">晨跑</span>
+          <span class="chip chip-tip">可在和田倉門廣場旁換裝</span>
         </div>
       </div>
       <div class="time-block">
         <span class="time-label">08:30</span>
         <div class="time-content">
-          <h4>  / </h4>
-          <p></p>
+          <h4>早餐 / 咖啡</h4>
+          <p>丸之內一帶有多家咖啡廳，跑完步享用悠閒早餐。</p>
         </div>
       </div>
       <div class="time-block">
         <span class="time-label">10:30</span>
         <div class="time-content">
-          <h4> </h4>
-          <p> UniqloGUH&MZARA </p>
-          <span class="chip chip-shop"></span>
-          <span class="chip chip-shop"></span>
+          <h4>銀座逛街</h4>
+          <p>中央通步行街，Uniqlo、GU、H&amp;M、ZARA 旗艦店，也有高端品牌。代購首選地點之一。</p>
+          <span class="chip chip-shop">代購</span>
+          <span class="chip chip-shop">中高端品牌</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">午餐</span>
         <div class="time-content">
-          <h4> </h4>
-          <p></p>
-          <span class="chip chip-ramen"> / </span>
+          <h4>東京車站拉麵街（東京ラーメンストリート）</h4>
+          <p>八家人氣拉麵店集中一地，斑鳩（魚貝豚骨）人氣最高。</p>
+          <span class="chip chip-ramen">豚骨 / 魚貝</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">下午</span>
         <div class="time-content">
-          <h4> </h4>
-          <p></p>
-          <span class="chip chip-pikmin"></span>
+          <h4>明治神宮（皮克敏）</h4>
+          <p>銀座線往原宿方向，明治神宮是東京最具代表性的神社，皮克敏神社系明信片必收。</p>
+          <span class="chip chip-pikmin">神社皮克敏</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">傍晚</span>
         <div class="time-content">
-          <h4>  + </h4>
-          <p> COMME des GARÇONSIssey Miyake </p>
-          <span class="chip chip-shop"></span>
+          <h4>原宿・竹下通 + 表參道</h4>
+          <p>竹下通有各種潮流小物，表參道是精品街，可逛 COMME des GARCONS、Issey Miyake 等。</p>
+          <span class="chip chip-shop">潮流代購</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">晚上</span>
         <div class="time-content">
-          <h4>  — </h4>
-          <p> Bar  20:00 </p>
-          <span class="chip chip-gay">Bar / </span>
+          <h4>新宿二丁目 — 正式出動</h4>
+          <p>週六是最熱鬧的夜晚，二丁目的 Bar 多半從 20:00 開始熱絡，建議先喝幾杯暖身。</p>
+          <span class="chip chip-gay">Bar / 夜生活</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 2 -->
   <div class="day-card">
     <div class="day-header" onclick="toggleDay(this)">
-      <span class="day-badge">6/14 </span>
-      <span class="day-title"> ·  · </span>
-      <span class="day-arrow"></span>
+      <span class="day-badge">6/14 日</span>
+      <span class="day-title">淺草文青日 · 隅田川夜跑 · 三溫暖</span>
+      <span class="day-arrow">▼</span>
     </div>
     <div class="day-body">
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">上午</span>
         <div class="time-content">
-          <h4>  + </h4>
-          <p>/</p>
-          <span class="chip chip-pikmin"></span>
-          <span class="chip chip-pikmin"></span>
+          <h4>淺草神社 + 淺草寺（皮克敏）</h4>
+          <p>日本最古老的寺廟之一，同一區域內有神社也有寺廟，可一次拿兩種飾品皮克敏。</p>
+          <span class="chip chip-pikmin">神社皮克敏</span>
+          <span class="chip chip-pikmin">寺廟皮克敏</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">午餐</span>
         <div class="time-content">
-          <h4> </h4>
-          <p></p>
-          <span class="chip chip-ramen"></span>
+          <h4>麵屋武藏（上野店）</h4>
+          <p>豚骨醬油濃厚系，叉燒厚切，湯頭濃郁，老牌名店。</p>
+          <span class="chip chip-ramen">濃厚醬油</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">下午</span>
         <div class="time-content">
-          <h4>  · </h4>
-          <p></p>
-          <span class="chip chip-shop"></span>
-          <span class="chip chip-shop"></span>
+          <h4>上野 · 阿美橫丁</h4>
+          <p>充滿庶民氣息的市場街，藥妝、零食、球鞋，代購好物挖寶。</p>
+          <span class="chip chip-shop">藥妝代購</span>
+          <span class="chip chip-shop">球鞋</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">傍晚</span>
         <div class="time-content">
-          <h4>  24 </h4>
-          <p>24  ¥2500–2900</p>
-          <span class="chip chip-gay"></span>
+          <h4>上野 24 會館（三溫暖）</h4>
+          <p>族群以中年熊族為主，設備齊全有大澡堂、蒸氣室。費用約 &yen;2500–2900。</p>
+          <span class="chip chip-gay">三溫暖</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">夜間</span>
         <div class="time-content">
-          <h4> </h4>
-          <p></p>
-          <span class="chip chip-run"></span>
+          <h4>隅田川夜跑</h4>
+          <p>三溫暖後夜跑放鬆，隅田川岸邊有整備好的步道，夜晚燈光美麗，可看到晴空塔倒影。</p>
+          <span class="chip chip-run">夜跑</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 3 -->
   <div class="day-card">
     <div class="day-header" onclick="toggleDay(this)">
-      <span class="day-badge">6/15 </span>
-      <span class="day-title"> ·  · </span>
-      <span class="day-arrow"></span>
+      <span class="day-badge">6/15 一</span>
+      <span class="day-title">代代木公園跑步 · 澀谷掃貨 · 神社</span>
+      <span class="day-arrow">▼</span>
     </div>
     <div class="day-body">
       <div class="time-block">
         <span class="time-label">06:30</span>
         <div class="time-content">
-          <h4> </h4>
-          <p> 2.2 km</p>
-          <span class="chip chip-run"></span>
+          <h4>代代木公園晨跑</h4>
+          <p>東京都心最大公園，外周約 2.2 km，可延伸到明治神宮附近，綠意盎然。</p>
+          <span class="chip chip-run">晨跑</span>
         </div>
       </div>
       <div class="time-block">
         <span class="time-label">10:00</span>
         <div class="time-content">
-          <h4>  / </h4>
-          <p></p>
-          <span class="chip chip-pikmin"></span>
+          <h4>澀谷周邊神社（皮克敏）</h4>
+          <p>代代木八幡宮等澀谷一帶小型神社，配合晨跑後順路繞去蒐集皮克敏。</p>
+          <span class="chip chip-pikmin">神社皮克敏</span>
         </div>
       </div>
       <div class="time-block">
         <span class="time-label">11:00</span>
         <div class="time-content">
-          <h4>  — SCRAMBLE SQUARE + Shibuya 109</h4>
-          <p>Shibuya 109 SCRAMBLE SQUARE  ABC-MART  atmos</p>
-          <span class="chip chip-shop"></span>
-          <span class="chip chip-shop"></span>
+          <h4>澀谷逛街 — SCRAMBLE SQUARE + Shibuya 109</h4>
+          <p>Shibuya 109 是日本流行指標，SCRAMBLE SQUARE 是潮流百貨。球鞋代購推薦 atmos、ABC-MART。</p>
+          <span class="chip chip-shop">潮流代購</span>
+          <span class="chip chip-shop">球鞋</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">午餐</span>
         <div class="time-content">
-          <h4>  </h4>
-          <p>Tabelog </p>
-          <span class="chip chip-ramen"></span>
-          <span class="chip chip-tip"></span>
+          <h4>らぁ麺 はやし田（新宿本店）</h4>
+          <p>Tabelog 高分名店，招牌醬油拉麵使用鴨肉與大山土雞熬煮，湯頭鮮香清澈層次豐富。</p>
+          <span class="chip chip-ramen">醬油系</span>
+          <span class="chip chip-tip">週一請提前確認是否休息</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">下午</span>
         <div class="time-content">
-          <h4>  — </h4>
-          <p>vintage </p>
-          <span class="chip chip-shop"></span>
+          <h4>下北澤 — 古著天堂</h4>
+          <p>東京最強古著街，二手球鞋、vintage 服飾、黑膠，代購好物聖地。</p>
+          <span class="chip chip-shop">古著</span>
           <span class="chip chip-shop">Vintage</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">晚上</span>
         <div class="time-content">
-          <h4>  — IPPUDO </h4>
-          <p></p>
-          <span class="chip chip-ramen"></span>
+          <h4>IPPUDO 一風堂（任選分店）</h4>
+          <p>博多豚骨經典，白丸元味必點，新宿、池袋、澀谷均有分店。</p>
+          <span class="chip chip-ramen">博多豚骨</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 4 -->
   <div class="day-card">
     <div class="day-header" onclick="toggleDay(this)">
-      <span class="day-badge">6/16 </span>
-      <span class="day-title"> ·  ·  · </span>
-      <span class="day-arrow"></span>
+      <span class="day-badge">6/16 二</span>
+      <span class="day-title">秋葉原 · 神田明神 · 發展場 · 夜跑</span>
+      <span class="day-arrow">▼</span>
     </div>
     <div class="day-body">
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">上午</span>
         <div class="time-content">
-          <h4>  —  & </h4>
-          <p> Yodobashi CameraSwitch </p>
-          <span class="chip chip-shop"></span>
-          <span class="chip chip-shop"></span>
+          <h4>秋葉原 — 電器 &amp; 動漫代購</h4>
+          <p>Yodobashi Camera、Switch 遊戲、耳機、動漫周邊，代購控天堂。</p>
+          <span class="chip chip-shop">電器代購</span>
+          <span class="chip chip-shop">動漫</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">午餐</span>
         <div class="time-content">
-          <h4> Homemade Ramen </h4>
-          <p>2025  TRY  9 11:00 </p>
-          <span class="chip chip-ramen"> · </span>
-          <span class="chip chip-tip">  10:45 </span>
+          <h4>Homemade Ramen 麦苗（品川）</h4>
+          <p>2025 年東京 TRY 拉麵大賞第一名，米其林推薦，只有 9 個座位，建議 10:45 前到排隊，11:00 開門。</p>
+          <span class="chip chip-ramen">醬油 · 米其林</span>
+          <span class="chip chip-tip">座位少，10:45 前到</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">下午</span>
         <div class="time-content">
-          <h4> — </h4>
-          <p> ACG </p>
-          <span class="chip chip-pikmin"></span>
-          <span class="chip chip-tip"></span>
+          <h4>神田明神（神田神社）— 皮克敏</h4>
+          <p>東京最古老神社之一，1300 年歷史，ACG 玩家朝聖聖地。從秋葉原步行可達。</p>
+          <span class="chip chip-pikmin">神社皮克敏</span>
+          <span class="chip chip-tip">有賣各種動漫合作御守</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">傍晚</span>
         <div class="time-content">
-          <h4> Rokuten—  + Bar </h4>
-          <p></p>
-          <span class="chip chip-gay"> + Bar</span>
+          <h4>神田六天（Rokuten）— 發展場 + Bar</h4>
+          <p>神田的複合式同志場所，兼具發展場與酒吧功能，氣氛友善，適合獨旅者。</p>
+          <span class="chip chip-gay">發展場 + Bar</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">深夜</span>
         <div class="time-content">
-          <h4>   </h4>
-          <p></p>
-          <span class="chip chip-run"></span>
+          <h4>隅田川或皇居外周夜跑</h4>
+          <p>散場後搭電車到皇居或淺草橋，夜跑降溫。夏夜東京街頭有種特別的孤獨感。</p>
+          <span class="chip chip-run">夜跑</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 5 -->
   <div class="day-card">
     <div class="day-header" onclick="toggleDay(this)">
-      <span class="day-badge">6/17 </span>
-      <span class="day-title"> ·  ·  · </span>
-      <span class="day-arrow"></span>
+      <span class="day-badge">6/17 三</span>
+      <span class="day-title">最終日 · 買跑鞋 · 最後一碗拉麵 · 回台灣</span>
+      <span class="day-arrow">▼</span>
     </div>
     <div class="day-body">
-      <div class="info-box info-box-green" style="margin-top: 12px;">
-         
+      <div class="info-box info-box-green" style="margin-top:12px;">
+        今天是最後購物機會，大件行李可寄存車站，輕裝血拼。
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">早上</span>
         <div class="time-content">
-          <h4>  —  /  ASICS / Onitsuka / New Balance</h4>
-          <p> LUMINE  ASICS  New Balance  Onitsuka Tiger</p>
-          <span class="chip chip-shop"></span>
+          <h4>買跑鞋 — 新宿 / 原宿</h4>
+          <p>推薦：新宿 LUMINE 地下 ASICS 旗艦店、原宿 New Balance 概念店、竹下通旁 Onitsuka Tiger。</p>
+          <span class="chip chip-shop">跑鞋</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">午餐</span>
         <div class="time-content">
-          <h4>  —    </h4>
-          <p> 08:00  × </p>
-          <span class="chip chip-ramen"> / </span>
-          <span class="chip chip-tip">   </span>
+          <h4>最後一碗 — らぁ麺や 嶋 或 むぎとオリーブ</h4>
+          <p>嶋：醬油拉麵頂點，需提前線上預約（當日前一天 08:00 開放）。むぎとオリーブ：雞白湯沾麵，銀座。</p>
+          <span class="chip chip-ramen">醬油 / 沾麵</span>
+          <span class="chip chip-tip">らぁ麺や 嶋 需要預約</span>
         </div>
       </div>
       <div class="time-block">
-        <span class="time-label"></span>
+        <span class="time-label">下午</span>
         <div class="time-content">
-          <h4> </h4>
-          <p> 3  2 </p>
-          <span class="chip chip-tip"> </span>
+          <h4>前往機場</h4>
+          <p>依班機時間安排，成田建議提前 3 小時出發，羽田 2 小時。行李超重可寄宅配到機場（ヤマト宅急便）。</p>
+          <span class="chip chip-tip">宅配機場隔日達服務很方便</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 
-     TAB 2  
- -->
+<!-- 拉麵地圖 -->
 <section id="ramen" class="section">
-  <div class="section-title"><span class="section-icon"></span> </div>
-
+  <div class="section-title">拉麵朝聖清單</div>
   <div class="info-box info-box-warning">
-      Tabelog TRY
+    以下店家均為 Tabelog 高分、TRY 拉麵大賞或米其林推薦等級。人氣店建議提早到或確認是否需要預約。
   </div>
 
-  <div class="sub-title"></div>
+  <div class="sub-title">醬油系</div>
   <div class="ramen-grid">
     <div class="ramen-card">
-      <h3>Homemade Ramen </h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"> · </span>
-        <span class="ramen-loc"> </span>
-      </div>
-      <p>2025 TRY  9 </p>
-      <p class="ramen-note">⏰ 11:00–15:00 10:45 </p>
-      <a class="map-link" href="https://maps.google.com/?q=Homemade+Ramen++" target="_blank"> Google Maps →</a>
+      <h3>Homemade Ramen 麦苗</h3>
+      <div class="ramen-meta"><span class="ramen-type">醬油 · 魚介</span><span class="ramen-loc">品川・南大井</span></div>
+      <p>2025 TRY 拉麵大賞第一名，米其林推薦多年，使用放養雞全天然無化學調味。只有 9 個座位，天天大排長龍。</p>
+      <p class="ramen-note">11:00–15:00（週三四休）｜建議 10:45 前到</p>
+      <a class="map-link" href="https://maps.google.com/?q=Homemade+Ramen+麦苗+品川" target="_blank">Google Maps</a>
     </div>
     <div class="ramen-card">
-      <h3> </h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"></span>
-        <span class="ramen-loc"> </span>
-      </div>
-      <p> No.1 08:00 </p>
-      <p class="ramen-note">⏰ 10:00–16:00 </p>
-      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+      <h3>らぁ麺や 嶋</h3>
+      <div class="ramen-meta"><span class="ramen-type">醬油</span><span class="ramen-loc">渋谷・本町</span></div>
+      <p>許多人心中的「東京醬油拉麵 No.1」，琥珀色湯頭，炭火叉燒，配料精緻。需線上預約，前一天早上 08:00 開放。</p>
+      <p class="ramen-note">10:00–16:00（週末假日休）｜需提前預約</p>
+      <a class="map-link" href="https://maps.google.com/?q=らぁ麺や嶋+渋谷" target="_blank">Google Maps</a>
     </div>
     <div class="ramen-card">
-      <h3> </h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"> · </span>
-        <span class="ramen-loc"> </span>
-      </div>
-      <p>Tabelog </p>
-      <p class="ramen-note">⏰ </p>
-      <a class="map-link" href="https://maps.google.com/?q=++" target="_blank"> Google Maps →</a>
+      <h3>らぁ麺 はやし田</h3>
+      <div class="ramen-meta"><span class="ramen-type">醬油 · 鴨湯</span><span class="ramen-loc">新宿</span></div>
+      <p>使用鴨肉與大山土雞整隻熬煮，層次分明，湯頭鮮香清澈。Tabelog 高分，中細直麵彈牙，低溫叉燒軟嫩。</p>
+      <p class="ramen-note">請至官網確認營業時間</p>
+      <a class="map-link" href="https://maps.google.com/?q=らぁ麺+はやし田+新宿" target="_blank">Google Maps</a>
     </div>
     <div class="ramen-card">
-      <h3></h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"></span>
-        <span class="ramen-loc">  </span>
-      </div>
-      <p> × </p>
-      <p class="ramen-note">   1F</p>
-      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+      <h3>斑鳩（いかるが）</h3>
+      <div class="ramen-meta"><span class="ramen-type">魚貝豚骨</span><span class="ramen-loc">東京車站 拉麵街</span></div>
+      <p>東京車站地下拉麵街人氣王，魚貝 x 豚骨混合湯頭，鮮美濃郁。適合行程轉換中途填肚。</p>
+      <p class="ramen-note">東京一番街 地下 1F</p>
+      <a class="map-link" href="https://maps.google.com/?q=斑鳩+東京ラーメンストリート" target="_blank">Google Maps</a>
     </div>
   </div>
 
-  <div class="sub-title"></div>
+  <div class="sub-title">豚骨系</div>
   <div class="ramen-grid">
     <div class="ramen-card">
-      <h3> IPPUDO</h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"></span>
-        <span class="ramen-loc">  · </span>
-      </div>
-      <p></p>
-      <p class="ramen-note"> </p>
+      <h3>一風堂 IPPUDO</h3>
+      <div class="ramen-meta"><span class="ramen-type">博多豚骨</span><span class="ramen-loc">多店 · 全東京</span></div>
+      <p>博多豚骨始祖，白丸元味必點，湯頭綿密濃郁不腥。新宿、池袋、澀谷均有分店，隨時都能吃到。</p>
     </div>
     <div class="ramen-card">
-      <h3></h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"> · </span>
-        <span class="ramen-loc">  / </span>
-      </div>
-      <p></p>
-      <p class="ramen-note">⏰  + </p>
-      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+      <h3>麵屋武藏（むさし）</h3>
+      <div class="ramen-meta"><span class="ramen-type">濃厚醬油 · 豚骨</span><span class="ramen-loc">上野 / 新宿</span></div>
+      <p>東京老牌名店，厚切叉燒是招牌，湯頭醇厚有深度。上野店位置方便，搭配逛阿美橫丁行程最佳。</p>
+      <a class="map-link" href="https://maps.google.com/?q=麺屋武蔵+上野" target="_blank">Google Maps</a>
     </div>
   </div>
 
-  <div class="sub-title"> / </div>
+  <div class="sub-title">特殊風味 / 沾麵</div>
   <div class="ramen-grid">
     <div class="ramen-card">
-      <h3>AFURI </h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"> · </span>
-        <span class="ramen-loc">  /  / </span>
-      </div>
-      <p></p>
-      <p class="ramen-note"> </p>
+      <h3>AFURI 阿夫利</h3>
+      <div class="ramen-meta"><span class="ramen-type">柚子鹽 · 沾麵</span><span class="ramen-loc">新宿 / 六本木 / 多店</span></div>
+      <p>柚子鹽拉麵始祖，湯頭清爽帶柑橘香氣，是吃膩濃郁豚骨時的最佳選擇。全東京多家分店。</p>
     </div>
     <div class="ramen-card">
-      <h3></h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"> · </span>
-        <span class="ramen-loc"> </span>
-      </div>
-      <p>Tabelog </p>
-      <p class="ramen-note">⏰ </p>
-      <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+      <h3>むぎとオリーブ</h3>
+      <div class="ramen-meta"><span class="ramen-type">雞白湯 · 貝類沾麵</span><span class="ramen-loc">銀座</span></div>
+      <p>Tabelog 高分，以雞白湯與蛤蜊貝類雙重高湯打底，沾麵湯汁濃厚鮮甜，是東京沾麵新星。</p>
+      <a class="map-link" href="https://maps.google.com/?q=むぎとオリーブ+銀座" target="_blank">Google Maps</a>
     </div>
     <div class="ramen-card">
-      <h3> </h3>
-      <div class="ramen-meta">
-        <span class="ramen-type"></span>
-        <span class="ramen-loc">  </span>
-      </div>
-      <p></p>
-      <p class="ramen-note">   1F</p>
+      <h3>中華蕎麦 とみ田</h3>
+      <div class="ramen-meta"><span class="ramen-type">濃厚沾麵</span><span class="ramen-loc">東京站 拉麵街</span></div>
+      <p>千葉松戶的傳說沾麵，東京車站拉麵街有分店。濃厚魚介豚骨沾麵，每一口都是衝擊。</p>
     </div>
   </div>
 </section>
 
-<!-- 
-     TAB 3  
- -->
+<!-- 跑步路線 -->
 <section id="run" class="section">
-  <div class="section-title"><span class="section-icon"></span> </div>
+  <div class="section-title">跑步路線推薦</div>
 
-  <div class="sub-title"></div>
-
+  <div class="sub-title">晨跑路線</div>
   <div class="spot-card accent-left-blue">
-    <h3>  — </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip">5 km · </span></div>
-    <p> 5 km</p>
-    <p style="margin-top: 6px;"> Athlete's Club </p>
-    <a class="map-link" href="https://maps.google.com/?q=++" target="_blank"> Google Maps →</a>
+    <h3>皇居外周 — 東京最經典</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-run">晨跑</span><span class="chip chip-tip">5 km · 全程平坦</span></div>
+    <p>東京最有名的晨跑路線，沿著皇居護城河繞行一圈約 5 km，全程平坦。周六早晨最多人，氛圍超讚。沿途景點：大手門、北の丸公園、桜田門。換衣淋浴：和田倉門廣場旁有公廁，附近健身房可付費沖澡。</p>
+    <a class="map-link" href="https://maps.google.com/?q=皇居+外周+ランニング" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-blue">
-    <h3>  — </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip">2.2 km /  · </span></div>
-    <p> 2.2 km</p>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>代代木公園 — 都心森林跑</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-run">晨跑</span><span class="chip chip-tip">2.2 km / 圈 · 可延伸</span></div>
+    <p>東京都心最大綠洲，外周一圈約 2.2 km，可延伸至明治神宮參道，感受神社前的清晨寧靜。週一晨跑完直接去神宮拿皮克敏，無縫接軌。</p>
+    <a class="map-link" href="https://maps.google.com/?q=代々木公園+ランニング" target="_blank">Google Maps</a>
   </div>
 
-  <div class="sub-title"></div>
+  <div class="sub-title">夜跑路線</div>
+  <div class="spot-card accent-left-blue">
+    <h3>隅田川沿岸 — 都市夜景夜跑</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-run">夜跑</span><span class="chip chip-tip">可長可短 · 燈光美麗</span></div>
+    <p>從淺草橋沿隅田川往北跑，可看到點燈的東京晴空塔倒映在河面。距離自由決定，4 km、8 km 皆宜。步道整備良好，夜間安全。建議晚上 21:00–23:00 跑，涼爽又少人。</p>
+    <a class="map-link" href="https://maps.google.com/?q=隅田川+ランニングコース" target="_blank">Google Maps</a>
+  </div>
 
   <div class="spot-card accent-left-blue">
-    <h3>  — </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip"> · </span></div>
-    <p>4 km8 km  21:00–23:00 </p>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>皇居外周（夜跑版）</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-run">夜跑</span><span class="chip chip-tip">5 km · 夜景版</span></div>
+    <p>皇居夜間同樣開放跑者，燈光打在城牆與護城河上，氣氛完全不同於早晨。深夜 22:00 後人少，桜田門前空曠幽靜。</p>
+    <a class="map-link" href="https://maps.google.com/?q=皇居+夜ラン" target="_blank">Google Maps</a>
   </div>
 
-  <div class="spot-card accent-left-blue">
-    <h3> </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-run"></span><span class="chip chip-tip">5 km · </span></div>
-    <p> 22:00 </p>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
-  </div>
-
-  <div class="info-box info-box-green" style="margin-top: 8px;">
-     <strong></strong> LUMINE  ASICS  New BalanceOnitsuka Tiger  ABC-MART Grand Stage 
+  <div class="info-box info-box-green" style="margin-top:8px;">
+    買跑鞋提醒：新宿 LUMINE 有 ASICS 旗艦店，原宿有 New Balance、Onitsuka Tiger 概念店，秋葉原附近有 ABC-MART Grand Stage。買了新鞋當天就可以穿去夜跑。
   </div>
 </section>
 
-<!-- 
-     TAB 4   & 
- -->
+<!-- 逛街代購 -->
 <section id="shop" class="section">
-  <div class="section-title"><span class="section-icon"></span>  & </div>
+  <div class="section-title">逛街 &amp; 代購地圖</div>
 
-  <div class="sub-title"> / </div>
+  <div class="sub-title">潮流 / 運動</div>
   <div class="spot-card accent-left-orange">
-    <h3> ·  + </h3>
-    <p>COMME des GARÇONSIssey MiyakeLoewe 10 </p>
-    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>原宿 · 竹下通 + 表參道</h3>
+    <p>竹下通：平價潮流、飾品、奇裝異服；表參道：高端品牌街（COMME des GARCONS、Issey Miyake、Loewe）。兩者步行 10 分鐘，可一次掃完。</p>
+    <div style="margin-top:8px;"><span class="chip chip-shop">潮流服飾</span><span class="chip chip-shop">設計師品牌</span></div>
+    <a class="map-link" href="https://maps.google.com/?q=原宿+竹下通" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-orange">
-    <h3> — SCRAMBLE SQUARE + Shibuya 109</h3>
-    <p>Shibuya 109 SCRAMBLE SQUARE atmosABC-MART Grand Stage</p>
-    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>澀谷 — SCRAMBLE SQUARE + Shibuya 109</h3>
+    <p>Shibuya 109 是日本流行指標，SCRAMBLE SQUARE 是超棒潮流百貨。球鞋代購推薦：atmos（日本獨家聯名多）、ABC-MART Grand Stage。</p>
+    <div style="margin-top:8px;"><span class="chip chip-shop">球鞋</span><span class="chip chip-shop">潮流百貨</span></div>
+    <a class="map-link" href="https://maps.google.com/?q=澀谷+スクランブルスクエア" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-orange">
-    <h3> —  & Vintage </h3>
-    <p>Vintage </p>
-    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop">Vintage</span></div>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>下北澤 — 古著 &amp; Vintage 天堂</h3>
+    <p>東京最強古著商圈，二手球鞋、Vintage 衣物、黑膠唱片應有盡有。獨立小店林立，台灣買不到的稀有品在這裡比較容易挖到。</p>
+    <div style="margin-top:8px;"><span class="chip chip-shop">古著</span><span class="chip chip-shop">Vintage</span></div>
+    <a class="map-link" href="https://maps.google.com/?q=下北沢+古着" target="_blank">Google Maps</a>
   </div>
 
-  <div class="sub-title"> / </div>
+  <div class="sub-title">百貨 / 中高端</div>
   <div class="spot-card accent-left-orange">
-    <h3> — </h3>
-    <p>Uniqlo 12 GUZARAH&M ChanelLVGucciHermès </p>
-    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop">Uniqlo </span></div>
+    <h3>銀座 — 中央通步行街</h3>
+    <p>Uniqlo 旗艦店（12 層樓）、GU、ZARA、H&amp;M，也有 Chanel、LV、Gucci、Hermes 等精品。週末中央通封街，變成步行者天堂。</p>
+    <div style="margin-top:8px;"><span class="chip chip-shop">精品代購</span><span class="chip chip-shop">Uniqlo 旗艦</span></div>
   </div>
 
-  <div class="sub-title"> /  / </div>
+  <div class="sub-title">藥妝 / 零食 / 雜貨</div>
   <div class="spot-card accent-left-orange">
-    <h3> · </h3>
-    <p>SUNDRUGDaikoku </p>
-    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>上野 · 阿美橫丁</h3>
+    <p>充滿庶民氣息的市場街道，藥妝店密度超高（松本清、SUNDRUG、Daikoku 等），零食土產、球鞋，價格偏便宜。代購藥妝在這裡掃最划算。</p>
+    <div style="margin-top:8px;"><span class="chip chip-shop">藥妝</span><span class="chip chip-shop">零食</span></div>
+    <a class="map-link" href="https://maps.google.com/?q=アメ横+上野" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-orange">
-    <h3> —  & </h3>
-    <p>Yodobashi CameraSwitch </p>
-    <div style="margin-top: 8px;"><span class="chip chip-shop"></span><span class="chip chip-shop"></span></div>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>秋葉原 — 電器 &amp; 動漫代購</h3>
+    <p>Yodobashi Camera（日本最大電器行之一），Switch 遊戲、耳機、相機配件都比台灣便宜。動漫周邊、模型、手辦更是無限供應。</p>
+    <div style="margin-top:8px;"><span class="chip chip-shop">電器</span><span class="chip chip-shop">動漫周邊</span></div>
+    <a class="map-link" href="https://maps.google.com/?q=秋葉原+ヨドバシカメラ" target="_blank">Google Maps</a>
   </div>
 
-  <div class="info-box info-box-warning" style="margin-top: 12px;">
-     <strong></strong> ¥5,000  10%
+  <div class="info-box info-box-warning" style="margin-top:12px;">
+    退稅提醒：購物達 &yen;5,000 以上可辦理免稅（消費稅 10%）。記得帶護照，當天在同一店購買才能合算。
   </div>
 </section>
 
-<!-- 
-     TAB 5  
- -->
+<!-- 同志場所 -->
 <section id="gay" class="section">
-  <div class="section-title"><span class="section-icon"></span> </div>
+  <div class="section-title">東京同志場所攻略</div>
 
   <div class="info-box info-box-pink">
-     
+    東京是亞洲最友善的同志城市之一，以新宿二丁目為核心，另有上野、中野、澀谷等分散場所。各發展場族群分明，入場前請確認自己符合該場規定。
   </div>
 
-  <div class="sub-title"></div>
-
+  <div class="sub-title">三溫暖</div>
   <div class="spot-card accent-left-pink">
-    <h3> 24 </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">24</span><span class="chip chip-tip">¥2500–2900</span></div>
-    <p></p>
-    <p style="margin-top: 6px;"> </p>
-    <a class="map-link" href="https://maps.google.com/?q=24" target="_blank"> Google Maps →</a>
+    <h3>新宿 24 會館</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">三溫暖</span><span class="chip chip-tip">24小時</span><span class="chip chip-tip">&yen;2500–2900</span></div>
+    <p>東京最知名的男同志三溫暖，設備齊全有大澡堂、蒸氣室、烤箱、休息區。新宿二丁目近距離，是二丁目逛完後的最佳延伸。族群以年輕族群為主。入場需填暱稱與居住地。</p>
+    <a class="map-link" href="https://maps.google.com/?q=新宿24会館" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-pink">
-    <h3> 24 </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">24</span><span class="chip chip-tip">¥2500–2900</span></div>
-    <p>24 bear</p>
-    <a class="map-link" href="https://maps.google.com/?q=24" target="_blank"> Google Maps →</a>
+    <h3>上野 24 會館</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">三溫暖</span><span class="chip chip-tip">24小時</span><span class="chip chip-tip">&yen;2500–2900</span></div>
+    <p>24 會館上野店，族群以中年熊族（bear）為主。設備同樣完善，地點在上野，方便搭配阿美橫丁購物行程。</p>
+    <a class="map-link" href="https://maps.google.com/?q=上野24会館" target="_blank">Google Maps</a>
   </div>
 
-  <div class="sub-title"></div>
-
-  <div class="info-box info-box-pink" style="font-size: 0.8rem;">
-      XTwitter ¥1000–1500
-  </div>
-
-  <div class="spot-card accent-left-pink">
-    <h3>Cave X@shinjukucave.tokyo</h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">¥1000–1500</span></div>
-    <p> X </p>
+  <div class="sub-title">發展場</div>
+  <div class="info-box info-box-pink" style="font-size:0.8rem;">
+    各發展場有族群入場限制，部分需符合年齡、體型或外型條件。建議事先確認官網或 X（Twitter）帳號說明。費用約 &yen;1000–1500。
   </div>
 
   <div class="spot-card accent-left-pink">
-    <h3>Rokuten@rokuten_kanda</h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"> + Bar </span><span class="chip chip-tip"></span></div>
-    <p></p>
-    <a class="map-link" href="https://maps.google.com/?q=+rokuten" target="_blank"> Google Maps →</a>
+    <h3>Cave X（新宿）</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">發展場</span><span class="chip chip-tip">&yen;1000–1500</span></div>
+    <p>新宿知名發展場，族群多元，人氣高，評價穩定。X 帳號 @shinjukucave.tokyo，建議先追蹤確認當日開放時段。</p>
   </div>
 
   <div class="spot-card accent-left-pink">
-    <h3>Volcano</h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay"></span><span class="chip chip-tip">20–30 · </span></div>
-    <p> 20–30 </p>
+    <h3>神田六天（Rokuten）</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">發展場 + Bar 複合</span><span class="chip chip-tip">神田</span></div>
+    <p>神田的複合式同志場所，兼具發展場與酒吧功能，氣氛友善親切，適合獨旅者。可以先在吧台喝一杯再進場，壓力不大。X 帳號 @rokuten_kanda。</p>
+    <a class="map-link" href="https://maps.google.com/?q=神田+六天" target="_blank">Google Maps</a>
   </div>
 
-  <div class="sub-title">Bar / </div>
+  <div class="spot-card accent-left-pink">
+    <h3>Volcano（新大久保）</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">發展場</span><span class="chip chip-tip">20–30歲 · 運動體型</span></div>
+    <p>新大久保的人氣發展場，主打 20–30 歲年輕運動族群，入場有體型要求。適合有運動習慣的人。</p>
+  </div>
 
+  <div class="sub-title">Bar / 夜生活（新宿二丁目）</div>
   <div class="spot-card accent-left-purple">
-    <h3>Eagle Tokyo @eagletokyojp</h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay">Bar</span><span class="chip chip-tip"></span></div>
-    <p> Barleather & bear </p>
+    <h3>Eagle Tokyo</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">Bar</span><span class="chip chip-tip">新宿二丁目</span></div>
+    <p>二丁目代表性 Bar，leather &amp; bear 風格，氣氛強烈，適合想感受地下文化的人。週末人潮爆棚。X 帳號 @eagletokyojp。</p>
   </div>
 
   <div class="spot-card accent-left-purple">
-    <h3>Aiiro Cafe @AiiROCAFE</h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay">Cafe Bar</span><span class="chip chip-tip"> · </span></div>
-    <p> Cafe Bar</p>
-    <a class="map-link" href="https://maps.google.com/?q=Aiiro+Cafe+" target="_blank"> Google Maps →</a>
+    <h3>Aiiro Cafe</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">Cafe Bar</span><span class="chip chip-tip">新宿二丁目 · 友善</span></div>
+    <p>二丁目最著名的同志 Cafe，各種人都歡迎，白天可喝咖啡，晚上變身 Bar。非常適合第一次來二丁目的人，無壓力入門。X 帳號 @AiiROCAFE。</p>
+    <a class="map-link" href="https://maps.google.com/?q=Aiiro+Cafe+新宿二丁目" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-purple">
-    <h3>Beast Tokyo @BEAST_TOKYO</h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-gay">Bar</span><span class="chip chip-tip"></span></div>
-    <p> Bar</p>
+    <h3>Beast Tokyo</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-gay">Bar</span><span class="chip chip-tip">新宿二丁目</span></div>
+    <p>二丁目的熊族 Bar，氣氛輕鬆豪放，適合體型壯碩或喜愛熊族文化的人，店內常播放電音。X 帳號 @BEAST_TOKYO。</p>
   </div>
 
-  <div class="info-box info-box-pink" style="margin-top: 8px;">
-     <strong> App</strong>Grindr / Jack'd / Scruff 
+  <div class="info-box info-box-pink" style="margin-top:8px;">
+    實用 App：Grindr / Jack'd / Scruff 在東京都有大量用戶，出發前可先更新位置，到了東京能更快找到同好或活動資訊。
   </div>
 </section>
 
-<!-- 
-     TAB 6  
- -->
+<!-- 皮克敏神社 -->
 <section id="pikmin" class="section">
-  <div class="section-title"><span class="section-icon"></span>   & </div>
+  <div class="section-title">皮克敏 神社 &amp; 景點集章</div>
 
   <div class="info-box info-box-green">
-      Pikmin Bloom  App 
+    在 Pikmin Bloom 中，神社與寺廟是取得「神社系飾品皮克敏」的唯一途徑（日本限定），也可收集各景點明信片。建議開著 App 走完整個旅程，每到一個景點就向下滑收集。
   </div>
 
-  <div class="sub-title"> · </div>
+  <div class="sub-title">神社 · 必去</div>
 
   <div class="spot-card accent-left-green">
-    <h3> </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
-    <p> Pikmin Bloom </p>
-    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
-  </div>
-
-  <div class="spot-card accent-left-green">
-    <h3>  + </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
-    <p> 1 </p>
-    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+    <h3>明治神宮</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-pikmin">神社皮克敏</span><span class="chip chip-tip">原宿站步行</span></div>
+    <p>東京最具代表性的神社，佔地廣大，在 Pikmin Bloom 中是超高人氣的集章點。逛完原宿順路進去，早晨去更清幽。</p>
+    <a class="map-link" href="https://maps.google.com/?q=明治神宮" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-green">
-    <h3> </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"> 10 </span></div>
-    <p>1300  ACG IDOLM@STER </p>
-    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+    <h3>淺草神社 + 淺草寺</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-pikmin">神社皮克敏</span><span class="chip chip-pikmin">寺廟皮克敏</span><span class="chip chip-tip">淺草站</span></div>
+    <p>同一區域內有神社也有寺廟，可以一次拿兩種飾品皮克敏。淺草寺是東京最古老的佛寺，淺草神社就在旁邊，步行 1 分鐘。</p>
+    <a class="map-link" href="https://maps.google.com/?q=浅草神社" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-green">
-    <h3> </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
-    <p></p>
-    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+    <h3>神田明神（神田神社）</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-pikmin">神社皮克敏</span><span class="chip chip-tip">秋葉原步行 10 分</span></div>
+    <p>東京最具歷史的神社之一，1300 年以上歷史，同時是最多 ACG 玩家朝聖的神社。從秋葉原步行可達，有賣各種動漫合作御守。</p>
+    <a class="map-link" href="https://maps.google.com/?q=神田明神" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-green">
-    <h3> </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"> · </span></div>
-    <p></p>
-    <a class="map-link" href="https://maps.google.com/?q=+" target="_blank"> Google Maps →</a>
+    <h3>代代木八幡宮</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-pikmin">神社皮克敏</span><span class="chip chip-tip">代代木公園旁</span></div>
+    <p>代代木公園晨跑後順路去，安靜小巧的住宅區神社，遠離觀光客，是本地人日常參拜的地點，收集明信片有不一樣的質感。</p>
+    <a class="map-link" href="https://maps.google.com/?q=代々木八幡宮" target="_blank">Google Maps</a>
   </div>
 
   <div class="spot-card accent-left-green">
-    <h3> </h3>
-    <div style="margin: 6px 0 8px;"><span class="chip chip-pikmin"></span><span class="chip chip-tip"></span></div>
-    <p></p>
-    <a class="map-link" href="https://maps.google.com/?q=" target="_blank"> Google Maps →</a>
+    <h3>日枝神社</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-pikmin">神社皮克敏</span><span class="chip chip-tip">赤坂 · 國會旁</span></div>
+    <p>東京都心著名神社，以大量鳥居隧道聞名，皮克敏明信片構圖美。</p>
+    <a class="map-link" href="https://maps.google.com/?q=日枝神社+赤坂" target="_blank">Google Maps</a>
   </div>
 
-  <div class="info-box info-box-green" style="margin-top: 12px;">
-     <strong></strong> App 
+  <div class="spot-card accent-left-green">
+    <h3>根津神社</h3>
+    <div style="margin:6px 0 8px;"><span class="chip chip-pikmin">神社皮克敏</span><span class="chip chip-tip">谷根千地區</span></div>
+    <p>江戶時代風情保存最完整的神社之一，位於充滿文青氣息的谷根千地區（谷中、根津、千駄木），可搭配轉場行程順路造訪。</p>
+    <a class="map-link" href="https://maps.google.com/?q=根津神社" target="_blank">Google Maps</a>
+  </div>
+
+  <div class="info-box info-box-green" style="margin-top:12px;">
+    皮克敏小技巧：進入神社後記得在 App 中向下滑動，才能取得該地點的飾品花苗。建議多帶幾隻皮克敏出任務，每個神社盡量派出去收集精華。
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div style="font-size: 1.4rem; margin-bottom: 8px;">     </div>
-   2026 · 6/12–6/17<br>
-  <span style="font-size: 0.72rem; color: #555;"> </span>
+  阿緯東京獨旅 2026 &middot; 6/12–6/17<br>
+  <span style="font-size:0.72rem; color:#555;">玩好吃好跑好，平安回來</span>
 </footer>
 
 <script>
@@ -1073,10 +920,8 @@
     btn.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   function toggleDay(header) {
-    const card = header.parentElement;
-    card.classList.toggle('open');
+    header.parentElement.classList.toggle('open');
   }
 </script>
 </body>
